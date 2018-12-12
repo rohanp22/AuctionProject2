@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Splash">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/icon" />
+
+    <TableLayout
+        android:layout_marginTop="100dp"
+        android:id="@+id/table"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo">
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/loginIcon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:src="@drawable/login" />
+
+            <ImageView
+                android:id="@+id/signupIcon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:src="@drawable/signup" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:layout_marginTop="50dp"
+        android:id="@+id/placebidButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/table"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/curvedbutton"
+        android:text="Place bid" />
+
+</RelativeLayout>

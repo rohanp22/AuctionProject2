@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingBottom="10dp"
+    android:background="@drawable/dialog_bg"
+    android:layout_margin="20dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:text=""
+        android:textSize="20dp"
+        android:textColor="@android:color/black"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:layout_margin="5dp"
+        android:id="@+id/basePrice"
+        android:text="Base Price"
+        android:layout_below="@id/dialogTitle"
+        android:layout_width="120dp"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:id="@+id/basePriceValue"
+        android:layout_margin="5dp"
+        android:layout_below="@id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/basePrice"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_margin="5dp"
+        android:id="@+id/enterDialog"
+        android:text="Enter bid amount :"
+        android:layout_below="@id/basePrice"
+        android:layout_width="120dp"
+        android:layout_height="30dp" />
+
+    <EditText
+        android:id="@+id/bidAmount"
+        android:background="@drawable/drawable_uname"
+        android:layout_marginLeft="5dp"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:padding="5dp"
+        android:textSize="15dp"
+        android:layout_below="@id/basePrice"
+        android:layout_toRightOf="@id/enterDialog"
+        android:layout_width="100dp"
+        android:inputType="number"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:id="@+id/totalPrice"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/enterDialog"
+        android:layout_margin="5dp"
+        android:text="Total price" />
+
+    <TextView
+        android:id="@+id/totalPriceValue"
+        android:layout_margin="5dp"
+        android:layout_below="@id/enterDialog"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/totalPrice"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@id/totalPrice"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/curvedbutton"
+        android:text="pay" />
+
+</RelativeLayout>

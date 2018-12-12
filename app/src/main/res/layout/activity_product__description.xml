@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Product_Description">
+
+    <TextView
+        android:layout_margin="10dp"
+        android:textSize="30dp"
+        android:textColor="@android:color/black"
+        android:id="@+id/titleProduct"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <ImageView
+        android:layout_below="@id/titleProduct"
+        android:id="@+id/productImage"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp" />
+
+    <!-- </android.support.v7.widget.CardView> -->
+
+    <TableLayout
+        android:layout_below="@id/titleProduct"
+        android:layout_margin="10dp"
+        android:layout_toRightOf="@+id/productImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_margin="10dp">
+
+            <TextView
+                android:textColor="@android:color/darker_gray"
+                android:layout_width="100dp"
+                android:text="Price"/>
+
+            <TextView
+                android:id="@+id/mrpproduct"
+                android:textColor="@android:color/black"
+                android:layout_width="100dp"
+                android:text="200"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_margin="10dp">
+
+            <TextView
+                android:textColor="@android:color/darker_gray"
+                android:layout_width="100dp"
+                android:text="Selling Price"/>
+
+            <TextView
+                android:id="@+id/sellingPrice"
+                android:textColor="@android:color/black"
+                android:layout_width="100dp"
+                android:text="200"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_margin="10dp">
+
+            <TextView
+                android:textColor="@android:color/darker_gray"
+                android:layout_width="100dp"
+                android:text="Ending in"/>
+
+            <TextView
+                android:id="@+id/endDate"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:text="200"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+    <View
+        android:layout_above="@+id/recyclerviewCurrent"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_margin="5dp"
+        android:background="@android:color/darker_gray"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerviewCurrent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" />
+
+</RelativeLayout>

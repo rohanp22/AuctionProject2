@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="?attr/actionBarSize">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Easy Vela"
+                    android:textColor="@android:color/black"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="Current Products"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textSize="20dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="#D3D3D3" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerviewCurrent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="#D3D3D3" />
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/recyclerviewCurrent"
+                    android:layout_marginLeft="4dp"
+                    android:text="Past Products"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textSize="20dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="#D3D3D3" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerviewPast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="#D3D3D3" />
+
+                <!--       <TextView
+                           android:layout_marginLeft="4dp"
+                           android:layout_width="match_parent"
+                           android:textColor="#000"
+                           android:layout_height="wrap_content"
+                           android:text="Upcoming Products"
+                           android:textSize="20dp" />
+
+                       <View
+                           android:layout_marginLeft="5dp"
+                           android:layout_marginRight="5dp"
+                           android:layout_marginTop="4dp"
+                           android:layout_marginBottom="4dp"
+                           android:layout_width="match_parent"
+                           android:layout_height="1dp"
+                           android:background="@android:color/darker_gray" />
+
+                       <android.support.v7.widget.RecyclerView
+                           android:id="@+id/recyclerviewUpcoming"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:orientation="horizontal" /> -->
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true">
+
+        <android.support.design.bottomappbar.BottomAppBar
+            android:id="@+id/bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabAlignmentMode="center"
+            app:backgroundTint="@color/colorPrimaryDark"
+            android:theme="@style/Widget.MaterialComponents.BottomAppBar"
+            app:navigationIcon="@drawable/nav_icon">
+
+        </android.support.design.bottomappbar.BottomAppBar>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:src="@drawable/ic_shopping_bag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="normal"
+            app:layout_anchor="@id/bar" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</RelativeLayout>
