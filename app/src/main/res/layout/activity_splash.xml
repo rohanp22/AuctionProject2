@@ -4,53 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Splash">
+    tools:context=".activity.Splash">
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="100dp"
-        android:src="@drawable/icon" />
+        android:src="@drawable/round_icon" />
 
     <TableLayout
-        android:layout_marginTop="100dp"
+        android:paddingTop="100dp"
         android:id="@+id/table"
         android:layout_centerHorizontal="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/logo">
-
+        android:layout_width="300dp"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content">
         <TableRow>
 
-            <ImageView
+            <Button
+                android:layout_margin="5dp"
                 android:id="@+id/loginIcon"
                 android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
-                android:src="@drawable/login" />
+                android:text="LOGIN"
+                android:visibility="invisible"
+                android:backgroundTint="@color/colorPrimaryLight"
+                android:textColor="@android:color/white"
+                android:background="@drawable/drawable_uname" />
 
-            <ImageView
+            <Button
+                android:layout_margin="5dp"
                 android:id="@+id/signupIcon"
                 android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_height="40dp"
+                android:visibility="invisible"
                 android:layout_weight="1"
-                android:src="@drawable/signup" />
+                android:textColor="@color/colorPrimaryLight"
+                android:text="SIGN UP"
+                android:background="@drawable/background_splash" />
 
         </TableRow>
 
     </TableLayout>
 
-    <Button
-        android:layout_marginTop="50dp"
+    <TextView
+        android:textStyle="italic"
+        android:visibility="invisible"
+        android:layout_marginTop="10dp"
         android:id="@+id/placebidButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/table"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/curvedbutton"
-        android:text="Place bid" />
+        android:text="skip" />
 
 </RelativeLayout>

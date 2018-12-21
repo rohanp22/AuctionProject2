@@ -1,4 +1,4 @@
-package com.example.apple.auctionproject;
+package com.example.apple.auctionproject.model;
 
 public class Past_Products {
 

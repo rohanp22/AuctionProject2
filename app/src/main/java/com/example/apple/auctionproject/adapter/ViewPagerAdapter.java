@@ -1,4 +1,4 @@
-package com.example.apple.auctionproject;
+package com.example.apple.auctionproject.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.apple.auctionproject.other.CustomVolleyRequest;
+import com.example.apple.auctionproject.R;
 
 public class ViewPagerAdapter extends PagerAdapter {
 

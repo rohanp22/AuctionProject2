@@ -1,6 +1,5 @@
-package com.example.apple.auctionproject;
+package com.example.apple.auctionproject.activity;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -9,11 +8,15 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.CountDownTimer;
 import android.support.design.bottomappbar.BottomAppBar;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,10 +35,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.example.apple.auctionproject.model.Current_Product;
+import com.example.apple.auctionproject.model.Past_Products;
+import com.example.apple.auctionproject.R;
+import com.example.apple.auctionproject.adapter.RecyclerViewAdapterPast;
+import com.example.apple.auctionproject.model.Upcoming_Products;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -50,17 +58,51 @@ public class MainActivity extends AppCompatActivity {
     TextView heading;
     Dialog dialog;
     Context context = this;
+    FloatingActionButton fab;
+    int backPressed = 0;
+
+    @Override
+    public void onBackPressed() {
+        backPressed++;
+        if(backPressed == 1)
+            Toast.makeText(this,"Press again to exit", Toast.LENGTH_SHORT).show();
+        if(backPressed == 2){
+            Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+            homeIntent.addCategory( Intent.CATEGORY_HOME );
+            homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(homeIntent);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        TextView noOfBids;
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MyCart.class));
+            }
+        });
+
+        noOfBids = (TextView) findViewById(R.id.numberOfBids);
+        noOfBids.setText(0 + "");
+
         heading = (TextView) findViewById(R.id.heading);
         Typeface type = Typeface.createFromAsset(getAssets(), "fonts/robotofont.ttf");
         heading.setTypeface(type);
         BottomAppBar b = (BottomAppBar) findViewById(R.id.bar);
         setSupportActionBar(b);
+        b.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
+            }
+        });
 
         loadPastProducts();
         loadCurrentProducts();
@@ -81,10 +123,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.wallet:
+                startActivity(new Intent(MainActivity.this, WalletActivity.class));
+                break;
+            case R.id.profile:
+                startActivity(new Intent(MainActivity.this, Profile.class));
+                break;
+        }
         return super.onOptionsItemSelected(item);
     }
 
-     void loadCurrentProducts() {
+    void loadCurrentProducts() {
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://easyvela.esy.es/AndroidAPI/currentproducts.php",
                 new Response.Listener<String>() {
@@ -218,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewPast.setAdapter(adapter2);
     }
 
-    class RecyclerViewAdapterCurrent extends RecyclerView.Adapter<RecyclerViewAdapterCurrent.ViewHolder>{
+    class RecyclerViewAdapterCurrent extends RecyclerView.Adapter<RecyclerViewAdapterCurrent.ViewHolder> {
 
         public int position;
         private static final String TAG = "RecyclerViewAdapterCurrent";
@@ -251,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
 
             date = current_products.get(position).getEnd_date();
 
-            Log.d("dates : ",date+"");
+            Log.d("dates : ", date + "");
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 
@@ -262,85 +313,113 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-                Glide.with(mContext)
-                        .asBitmap()
-                        .load(current_products.get(position).getImage_url())
-                        .into(holder.image);
+            Glide.with(mContext)
+                    .asBitmap()
+                    .load(current_products.get(position).getImage_url())
+                    .into(holder.image);
 
-                holder.name.setText(current_products.get(position).getTitle());
+            holder.name.setText(current_products.get(position).getTitle());
 
-                holder.mrp.setText(current_products.get(position).getMrp());
+            holder.mrp.setText(current_products.get(position).getMrp());
 
-                holder.sp.setText(current_products.get(position).getSp());
+            holder.sp.setText(current_products.get(position).getSp());
 
-                final long secondsInMilli = 1000;
-                final long minutesInMilli = secondsInMilli * 60;
-                final long hoursInMilli = minutesInMilli * 60;
-                final long daysInMilli = hoursInMilli * 24;
+            final long secondsInMilli = 1000;
+            final long minutesInMilli = secondsInMilli * 60;
+            final long hoursInMilli = minutesInMilli * 60;
+            final long daysInMilli = hoursInMilli * 24;
 
-                final long finalDiff = diff;
+            final long finalDiff = diff;
 
-                    new CountDownTimer(finalDiff, 1000) {
+            new CountDownTimer(finalDiff, 1000) {
 
-                        long dif = finalDiff;
+                long dif = finalDiff;
 
-                        public void onTick(long millisUntilFinished) {
+                public void onTick(long millisUntilFinished) {
 
-                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 
-                            try {
-                                startDate1 = simpleDateFormat.parse(current_products.get(position).getEnd_date());
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
+                    try {
+                        startDate1 = simpleDateFormat.parse(current_products.get(position).getEnd_date());
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
 
-                            long different = Math.abs(startDate1.getTime() - System.currentTimeMillis());
+                    long different = Math.abs(startDate1.getTime() - System.currentTimeMillis());
 
-                            final long elapsedDays = different / daysInMilli;
+                    final long elapsedDays = different / daysInMilli;
 
-                            final long elapsedHours = different / hoursInMilli;
-                            different = different % hoursInMilli;
+                    final long elapsedHours = different / hoursInMilli;
+                    different = different % hoursInMilli;
 
-                            final long elapsedMinutes = different / minutesInMilli;
-                            different = different % minutesInMilli;
+                    final long elapsedMinutes = different / minutesInMilli;
+                    different = different % minutesInMilli;
 
-                            final long elapsedSeconds = different / secondsInMilli;
-                            Log.d("timerem", elapsedDays + ":" + elapsedHours + ":" + elapsedMinutes + ":" + elapsedSeconds);
-                            String curtime = elapsedHours + ":" + elapsedMinutes + ":" + elapsedSeconds;
-                            holder.time.setText(curtime);
-                        }
+                    final long elapsedSeconds = different / secondsInMilli;
+                    Log.d("timerem", elapsedDays + ":" + elapsedHours + ":" + elapsedMinutes + ":" + elapsedSeconds);
+                    String curtime = elapsedHours + ":" + elapsedMinutes + ":" + elapsedSeconds;
+                    holder.time.setText(curtime);
+                }
 
-                        public void onFinish() {
-                            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://easyvela.esy.es/AndroidAPI/currentmove.php?id=" + current_products.get(position).getId(),
-                                    new Response.Listener<String>() {
-                                        @Override
-                                        public void onResponse(String response) {
-                                            Toast.makeText(mContext, response, Toast.LENGTH_LONG);
-                                        }
-                                    },
-                                    new Response.ErrorListener() {
-                                        @Override
-                                        public void onErrorResponse(VolleyError error) {
+                public void onFinish() {
+                    StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://easyvela.esy.es/AndroidAPI/currentmove.php?id=" + current_products.get(position).getId(),
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    Toast.makeText(mContext, response, Toast.LENGTH_LONG);
+                                    initRecyclerView();
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
 
-                                        }
-                                    });
-                            RequestQueue requestQueue = Volley.newRequestQueue(mContext);
-                            requestQueue.add(stringRequest);
-                        }
-                    }.start();
+                                }
+                            });
+                    RequestQueue requestQueue = Volley.newRequestQueue(mContext);
+                    requestQueue.add(stringRequest);
+                }
+            }.start();
 
             holder.bid.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     TextView basePrice = (TextView) dialog.findViewById(R.id.basePriceValue);
-                    TextView totalPrice = (TextView) dialog.findViewById(R.id.totalPriceValue);
+                    final TextView totalPrice = (TextView) dialog.findViewById(R.id.totalPriceValue);
                     TextView title = (TextView) dialog.findViewById(R.id.dialogTitle);
-                    basePrice.setText(current_products.get(position).getTitle());
+                    basePrice.setText("₹ " + current_products.get(position).getSp());
                     title.setText(current_products.get(position).getTitle());
-                    EditText t = (EditText) dialog.findViewById(R.id.bidAmount);
-                    int tot = Integer.parseInt(t.getText().toString()) + Integer.parseInt(current_products.get(position).getSp());
-                    totalPrice.setText(tot+"");
+
+                    int total = 0;
+
+                    final int bp = Integer.parseInt(current_products.get(position).getSp());
+                    EditText myBid = (EditText) dialog.findViewById(R.id.bidAmount);
                     dialog.show();
+
+                    final TextWatcher mTextEditorWatcher = new TextWatcher() {
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                        }
+
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+                            //This sets a textview to the current length
+                            int sum = 0;
+
+                            if (!s.equals("")) {
+                                try {
+                                    sum = Integer.parseInt(s.toString()) + bp;
+                                } catch (NumberFormatException e) {
+                                    e.printStackTrace();
+                                }
+                                totalPrice.setText("₹ " + sum);
+                            }
+
+                        }
+
+                        public void afterTextChanged(Editable s) {
+                        }
+                    };
+
+                    myBid.addTextChangedListener(mTextEditorWatcher);
                 }
             });
 
@@ -348,9 +427,9 @@ public class MainActivity extends AppCompatActivity {
             holder.image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(MainActivity.this,Product_Description.class);
-                    i.putExtra("id",position+"");
-                    Log.d("Position",position+"");
+                    Intent i = new Intent(MainActivity.this, Product_Description.class);
+                    i.putExtra("id", position + "");
+                    Log.d("Position", position + "");
                     startActivity(i);
                 }
             });

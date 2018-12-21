@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".activity.LoginActivity">
 
     <LinearLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="150dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="40dp"
         android:background="@drawable/drawable_uname"
         android:orientation="vertical">
 
         <EditText
             android:id="@+id/mailLogin"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:layout_margin="10dp"
             android:background="@android:color/transparent"
             android:hint="E-mail"
@@ -29,12 +29,12 @@
             android:id="@+id/v1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#1caadf" />
+            android:background="@color/colorPrimaryLight" />
 
         <EditText
             android:id="@+id/passwordLogin"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:layout_margin="10dp"
             android:background="@android:color/transparent"
             android:ems="10"
@@ -46,14 +46,15 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/layout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorPrimaryLight"
         android:background="@drawable/drawable_uname"
         android:text="Login"
-        android:textColor="#1caadf" />
+        android:textColor="#FFFFFF" />
 
     <TableLayout
         android:layout_width="300dp"
@@ -87,5 +88,14 @@
         </TableRow>
 
     </TableLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="invisible"
+        android:layout_marginBottom="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

@@ -5,87 +5,147 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Product_Description">
-
-    <TextView
-        android:layout_margin="10dp"
-        android:textSize="30dp"
-        android:textColor="@android:color/black"
-        android:id="@+id/titleProduct"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
+    android:background="@android:color/white"
+    tools:context=".activity.Product_Description">
 
     <ImageView
-        android:layout_below="@id/titleProduct"
         android:id="@+id/productImage"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp" />
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:id="@+id/titleProduct"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@+id/productImage"
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <!-- </android.support.v7.widget.CardView> -->
 
     <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/titleProduct"
         android:layout_margin="10dp"
-        android:layout_toRightOf="@+id/productImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_toRightOf="@+id/productImage">
 
-        <TableRow
-            android:layout_margin="10dp">
+        <TableRow>
 
             <TextView
-                android:textColor="@android:color/darker_gray"
                 android:layout_width="100dp"
-                android:text="Price"/>
+                android:text="Actual Price"
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/mrpproduct"
-                android:textColor="@android:color/black"
                 android:layout_width="100dp"
-                android:text="200"/>
+                android:text=""
+                android:textColor="@android:color/black" />
 
         </TableRow>
 
-        <TableRow
-            android:layout_margin="10dp">
+        <TableRow android:layout_marginTop="10dp">
 
             <TextView
-                android:textColor="@android:color/darker_gray"
                 android:layout_width="100dp"
-                android:text="Selling Price"/>
+                android:text="Selling Price"
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/sellingPrice"
-                android:textColor="@android:color/black"
                 android:layout_width="100dp"
-                android:text="200"/>
+                android:text=""
+                android:textColor="@android:color/black" />
 
         </TableRow>
 
-        <TableRow
-            android:layout_margin="10dp">
+        <TableRow android:layout_marginTop="10dp">
 
             <TextView
-                android:textColor="@android:color/darker_gray"
                 android:layout_width="100dp"
-                android:text="Ending in"/>
+                android:text="Ending on"
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/endDate"
-                android:textColor="@android:color/black"
-                android:layout_width="wrap_content"
-                android:text="200"/>
+                android:layout_width="100dp"
+                android:text=""
+                android:textColor="@android:color/black" />
 
         </TableRow>
 
     </TableLayout>
 
+    <TableLayout
+        android:id="@+id/tablecountdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/productImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp">
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/endin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ends in     "
+                android:textColor="#D3D3D3"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/countDownTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/placeBidDetails"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/tablecountdown"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/curvedbutton"
+        android:text="bid now"
+        android:textColor="#FFFFFF"
+        android:textSize="10dp" />
+
     <View
-        android:layout_above="@+id/recyclerviewCurrent"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_margin="5dp"
-        android:background="@android:color/darker_gray"/>
+        android:layout_height="1dp"
+        android:layout_below="@id/productImage"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="60dp"
+        android:background="#D3D3D3" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/recyclerviewCurrent"
+        android:layout_marginBottom="20dp"
+        android:background="#D3D3D3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/recyclerviewCurrent"
+        android:layout_marginLeft="5dp"
+        android:text="More Products" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerviewCurrent"

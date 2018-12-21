@@ -1,4 +1,4 @@
-package com.example.apple.auctionproject;
+package com.example.apple.auctionproject.other;
 
 import android.content.Context;
 import android.graphics.Bitmap;

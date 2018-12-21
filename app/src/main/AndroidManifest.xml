@@ -14,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Splash"
+            android:name=".activity.Splash"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,12 +26,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Product_Description"
+            android:name=".activity.Product_Description"
+            android:label="Product details"
+            android:parentActivityName=".activity.MainActivity" />
+        <activity
+            android:name=".activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".SignupActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activity.SignupActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".activity.WalletActivity"
+            android:label="Wallet"
+            android:parentActivityName=".activity.MainActivity" />
+        <activity
+            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".activity.Profile"
+            android:label="Profile"
+            android:parentActivityName=".activity.MainActivity" />
+        <activity
+            android:label="My bids"
+            android:parentActivityName=".activity.MainActivity"
+            android:name=".activity.MyCart"></activity>
     </application>
 
 </manifest>

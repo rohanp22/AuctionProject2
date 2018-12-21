@@ -1,6 +1,6 @@
-package com.example.apple.auctionproject;
+package com.example.apple.auctionproject.model;
 
-public class Upcoming_Products {
+public class Current_Product {
 
     private String id;
     private String image_url;
@@ -9,7 +9,7 @@ public class Upcoming_Products {
     private String mrp;
     private String sp;
 
-    public Upcoming_Products(String id,String image_url,String title,String end_date,String mrp,String sp){
+    public Current_Product(String id,String image_url,String title,String end_date,String mrp,String sp){
         this.end_date = end_date;
         this.title = title;
         this.image_url = image_url;
@@ -41,5 +41,4 @@ public class Upcoming_Products {
     public String getTitle() {
         return title;
     }
-
 }

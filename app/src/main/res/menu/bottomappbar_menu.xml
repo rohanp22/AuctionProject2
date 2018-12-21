@@ -4,15 +4,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/app_bar_fav"
-        android:icon="@drawable/logo"
-        android:title="fav"
+        android:id="@+id/wallet"
+        android:icon="@drawable/ic_account_balance_wallet_white_24dp"
+        android:title="wallet"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/app_bar_search"
-        android:icon="@drawable/login"
-        android:title="noth"
+        android:title="profile"
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_account_box_black_24dp"
         app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/help"
+        android:title="Help"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/contactus"
+        android:title="Contact us"
+        app:showAsAction="never"/>
 
 </menu>

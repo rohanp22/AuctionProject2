@@ -1,4 +1,4 @@
-package com.example.apple.auctionproject;
+package com.example.apple.auctionproject.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,18 +8,24 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
+import com.example.apple.auctionproject.R;
+import com.example.apple.auctionproject.model.Upcoming_Products;
+
 import java.util.ArrayList;
 
-public class RecyclerViewAdapterPast extends RecyclerView.Adapter<RecyclerViewAdapterPast.ViewHolder> {
+public class RecyclerViewAdapterUpcoming extends RecyclerView.Adapter<RecyclerViewAdapterUpcoming.ViewHolder> {
 
-    ArrayList<Past_Products> past_prodcuts;
+    private static final String TAG = "RecyclerViewAdapterCurrent";
+    String date;
+    ArrayList<Upcoming_Products> upcoming_products;
 
 
     private Context mContext;
 
-    public RecyclerViewAdapterPast(Context context, ArrayList<Past_Products> past_products) {
-        this.past_prodcuts = past_products;
+    public RecyclerViewAdapterUpcoming(Context context, ArrayList<Upcoming_Products> upcoming_products) {
+        this.upcoming_products = upcoming_products;
         mContext = context;
     }
 
@@ -32,20 +38,24 @@ public class RecyclerViewAdapterPast extends RecyclerView.Adapter<RecyclerViewAd
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        holder.setIsRecyclable(false);
+        long diff = 0;
 
-        holder.btn.setVisibility(View.GONE);
+        holder.setIsRecyclable(false);
 
         Glide.with(mContext)
                 .asBitmap()
-                .load(past_prodcuts.get(position).getImage_url())
+                .load(upcoming_products.get(position).getImage_url())
                 .into(holder.image);
 
-        holder.name.setText(past_prodcuts.get(position).getTitle());
+        holder.name.setText(upcoming_products.get(position).getTitle());
 
-        holder.mrp.setText(past_prodcuts.get(position).getMrp());
+        holder.mrp.setText(upcoming_products.get(position).getMrp());
 
-        holder.sp.setText(past_prodcuts.get(position).getSp());
+        holder.sp.setText(upcoming_products.get(position).getSp());
+
+        holder.btn.setVisibility(View.INVISIBLE);
+
+        //Log.d("this",mImageUrls.get(position)+mNames.get(position));
 
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +68,7 @@ public class RecyclerViewAdapterPast extends RecyclerView.Adapter<RecyclerViewAd
 
     @Override
     public int getItemCount() {
-        return past_prodcuts.size();
+        return upcoming_products.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -84,3 +94,4 @@ public class RecyclerViewAdapterPast extends RecyclerView.Adapter<RecyclerViewAd
         return 1;
     }
 }
+

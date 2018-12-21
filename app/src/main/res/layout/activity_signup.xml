@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignupActivity">
+    tools:context=".activity.SignupActivity">
 
     <LinearLayout
         android:layout_centerInParent="true"
@@ -66,16 +66,17 @@
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
+            android:backgroundTint="@color/colorPrimaryLight"
             android:background="@drawable/drawable_uname"
             android:text="Signup"
-            android:textColor="@color/blue" />
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
             android:text="Login"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryLight"
             android:layout_marginTop="20dp"
             />
 
