@@ -16,7 +16,6 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -111,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.bid_dialog);
 
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        //loadUpcomingProducts();
     }
 
     @Override
@@ -422,7 +420,6 @@ public class MainActivity extends AppCompatActivity {
                     myBid.addTextChangedListener(mTextEditorWatcher);
                 }
             });
-
 
             holder.image.setOnClickListener(new View.OnClickListener() {
                 @Override

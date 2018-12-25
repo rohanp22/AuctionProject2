@@ -9,11 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.bumptech.glide.Glide;
 import com.example.apple.auctionproject.R;
 import com.example.apple.auctionproject.model.CartItems;
-import com.example.apple.auctionproject.model.WalletTransaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ public class MyCart extends AppCompatActivity {
         cartItems = new ArrayList<>();
 
         CartItems c = new CartItems("http://easyvela.esy.es/CurrentProductImages/Apple.jpg","300","Active","Apple");
+        cartItems.add(c);
         cartItems.add(c);
 
         CartAdapter cartAdapter = new CartAdapter(this,cartItems);
@@ -58,6 +60,13 @@ public class MyCart extends AppCompatActivity {
             View view = layoutInflater.inflate(R.layout.mybid_layout, null, false);
 
             //getting the view elements of the list from the view
+
+            ImageView image = (ImageView) view.findViewById(R.id.myBidImage);
+
+            Glide.with(context)
+                    .asBitmap()
+                    .load("http://easyvela.esy.es/CurrentProductImages/Apple.jpg")
+                    .into(image);
 
             return view;
         }

@@ -11,15 +11,12 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.apple.auctionproject.R;
 import com.example.apple.auctionproject.other.RequestHandler;
 import com.example.apple.auctionproject.other.SharedPrefManager;
 import com.example.apple.auctionproject.model.User;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
@@ -141,7 +138,6 @@ public class LoginActivity extends AppCompatActivity {
                 return requestHandler.sendPostRequest("LoginURL", params);
             }
         }
-
         UserLogin ul = new UserLogin();
         ul.execute();
     }

@@ -1,73 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    tools:context=".activity.WalletActivity">
+    android:fitsSystemWindows="true">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/transactionList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <RelativeLayout
-        android:id="@+id/balanceLayout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/colorPrimaryLight">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:onClick="back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="20dp"
-            android:src="@drawable/ic_arrow_back_white_24dp" />
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+        <android.support.design.widget.FloatingActionButton
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/addmoney"
+            android:backgroundTint="#FFFFFF"
             android:layout_alignParentRight="true"
-            android:layout_margin="20dp"
-            android:src="@drawable/ic_add_black_24dp" />
-
-        <TextView
+            android:layout_marginBottom="30dp"
+            android:layout_marginRight="30dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="45dp"
-            android:layout_toLeftOf="@id/balance"
-            android:text="₹"
-            android:textColor="#FFF"
-            android:textSize="25dp" />
-
-        <TextView
-            android:id="@+id/balance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="40dp"
-            android:text="434"
-            android:textColor="#FFF"
-            android:textSize="35dp" />
+            android:layout_height="wrap_content" />
 
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/viewTransactions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/balanceLayout"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:text="View Transactions"
-        android:textColor="@color/blue" />
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-        <ListView
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_below="@+id/viewTransactions"
-            android:id="@+id/transactionList"
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapse_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp" />
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-</RelativeLayout>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -450,8 +450,5 @@ public class Product_Description extends AppCompatActivity {
                 requestQueue.add(stringRequest);
             }
         }.start();
-
-
-
     }
 }

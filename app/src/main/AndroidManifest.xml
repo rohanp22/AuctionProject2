@@ -48,7 +48,7 @@
         <activity
             android:label="My bids"
             android:parentActivityName=".activity.MainActivity"
-            android:name=".activity.MyCart"></activity>
+            android:name=".activity.MyCart" />
     </application>
 
 </manifest>

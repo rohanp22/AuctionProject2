@@ -32,11 +32,11 @@ public class Splash extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Animation animation = new TranslateAnimation(0, 0,0, -250);
-                animation.setDuration(1000);
-                animation.setFillAfter(true);
-                rotateImage.startAnimation(animation);
-                rotateImage.setVisibility(View.VISIBLE);
+//                Animation animation = new TranslateAnimation(0, 0,0, -300);
+//                animation.setDuration(1000);
+//                animation.setFillAfter(true);
+//                rotateImage.startAnimation(animation);
+//                rotateImage.setVisibility(View.VISIBLE);
             }
         },2000);
 

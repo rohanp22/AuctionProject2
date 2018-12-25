@@ -10,10 +10,10 @@ import com.example.apple.auctionproject.model.User;
 public class SharedPrefManager {
 
     //the constants
-    private static final String SHARED_PREF_NAME = "bahubalisharedpref";
+    private static final String SHARED_PREF_NAME = "easyvelasharedpref";
     private static final String KEY_MOBILE = "keymobile";
     private static final String KEY_EMAIL = "keyemail";
-    private static final String KEY_NAME = "keyname";
+    private static final String KEY_FIRSTNAME = "keyname";
     private static final String KEY_LASTNAME = "keylastname";
     private static final String KEY_ADDRESS = "keyaddress";
     private static final String KEY_PINCODE = "keypincode";
@@ -41,7 +41,7 @@ public class SharedPrefManager {
         editor.putString(KEY_ID, user.getId());
         editor.putString(KEY_MOBILE, user.getContactno());
         editor.putString(KEY_EMAIL, user.getEmail());
-        editor.putString(KEY_NAME, user.getFirstName());
+        editor.putString(KEY_FIRSTNAME, user.getFirstName());
         editor.putString(KEY_ADDRESS,user.getAddress());
         editor.putString(KEY_BALANCE,user.getBalance());
         editor.putString(KEY_PINCODE,user.getPincode());
@@ -61,7 +61,7 @@ public class SharedPrefManager {
                 sharedPreferences.getString(KEY_ID, null),
                 sharedPreferences.getString(KEY_USERNAME, null),
                 sharedPreferences.getString(KEY_EMAIL, null),
-                sharedPreferences.getString(KEY_NAME, null),
+                sharedPreferences.getString(KEY_FIRSTNAME, null),
                 sharedPreferences.getString(KEY_LASTNAME, null),
                 sharedPreferences.getString(KEY_BALANCE, null),
                 sharedPreferences.getString(KEY_ADDRESS,null),
